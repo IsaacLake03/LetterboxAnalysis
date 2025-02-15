@@ -13,5 +13,7 @@
     My hypothesis is that there will be plenty of movies that I have missed (especially foreign films), and plenty that I have forgotten that will make this a worthwhile experience. I also imagine that this will be easier and harder than I imagine, easier because the DB is very well organised and documented(no refactoring necessary thank goodness), as well as the queries necessary on them being very similar to the ones I ran back in databases. Harder because it is wider than anything I have worked with. My hope is that I get the main functionality done fairly quickly and I can start playing around with extra features like displaying blurbs, linking to reviews etc. *I also expect this to be a fairly popular choice of database among the class and hope that with my expedited submission this will be accepted (not sure if duplicates are allowed yet)*
 
 4. What is the primary dataset(s) you will use to answer the question? The dataset(s) must be at least 15GB in their original form when downloaded. Provide links. You may not choose r/place (any year) as your analysis set.
+    
     [Kaggle Database Link](https://www.kaggle.com/datasets/gsimonx37/letterboxd?select=studios.csv)
+    
     DB size: 24.71GB
