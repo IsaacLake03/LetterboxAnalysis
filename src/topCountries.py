@@ -7,7 +7,7 @@ def find_top_movies():
     con = duckdb.connect()
     
     # Get the top 100 movies
-    result = con.execute("SELECT country, count(*) as movies FROM parquet_scan('/Users/isaac/Desktop/CSC369/LetterboxAnalysis/LetterboxParquet/countries.parquet') GROUP BY country ORDER BY COUNT(*) DESC LIMIT 10")
+    result = con.execute("SELECT country, count(*) FROM parquet_scan('/Users/isaac/Desktop/CSC369/LetterboxAnalysis/LetterboxParquet/countries.parquet') GROUP BY country ORDER BY COUNT(*) DESC LIMIT 10")
     
     # Schema of the movies table is as follows:
     # id, name, date, tagline, description, minute, rating
