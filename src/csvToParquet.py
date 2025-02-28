@@ -9,11 +9,15 @@ import os
 # folder and converts them to Parquet files in the output folder.
 
 def csv_to_parquet(input_csv, output_parquet):
-    # Connect to an in-memory DuckDB instance
-    con = duckdb.connect(database=':memory:')
+    try:
+        # Connect to an in-memory DuckDB instance
+        con = duckdb.connect(database=':memory:')
 
-    # Read the CSV file into a DuckDB table
-    con.execute(f"COPY (SELECT * FROM read_csv_auto('{input_csv}', ignore_errors=True)) TO '{output_parquet}' (FORMAT 'parquet')")
+        # Read the CSV file into a DuckDB table and write it to a Parquet file
+        con.execute(f"COPY (SELECT * FROM read_csv_auto('{input_csv}'), strict_mode=false, AUTO_DETECT=TRUE) TO '{output_parquet}' (FORMAT 'PARQUET', CODEC 'ZSTD')")
+        print(f"Converted {input_csv} to {output_parquet}")
+    except Exception as e:
+        print(f"Error converting {input_csv} to {output_parquet}: {e}")
 
 if __name__ == "__main__":
     script_dir = os.path.dirname(os.path.abspath(__file__))
@@ -29,5 +33,4 @@ if __name__ == "__main__":
             input_csv = os.path.join(input_folder, filename)
             output_parquet = os.path.join(output_folder, filename.replace('.csv', '.parquet'))
             csv_to_parquet(input_csv, output_parquet)
-            print(f"Converted {input_csv} to {output_parquet}")
 
