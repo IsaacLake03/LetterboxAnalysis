@@ -1,4 +1,5 @@
 import duckdb
+import polars as pl
 import os
 
 # This code converts the entire dataset from CSV to Parquet format
@@ -14,10 +15,16 @@ def csv_to_parquet(input_csv, output_parquet):
         con = duckdb.connect(database=':memory:')
 
         # Read the CSV file into a DuckDB table and write it to a Parquet file
-        con.execute(f"COPY (SELECT * FROM read_csv_auto('{input_csv}'), strict_mode=false, AUTO_DETECT=TRUE) TO '{output_parquet}' (FORMAT 'PARQUET', CODEC 'ZSTD')")
+        con.execute(f"COPY (SELECT * FROM read_csv_auto('{input_csv}')) TO '{output_parquet}' (FORMAT 'parquet')")
         print(f"Converted {input_csv} to {output_parquet}")
     except Exception as e:
         print(f"Error converting {input_csv} to {output_parquet}: {e}")
+
+def countries_parquet_conv(input_csv, output_parquet):
+    df = pl.read_csv(input_csv, columns=['id', 'country'])
+    df.write_parquet(output_parquet)
+    print(f"Converted {input_csv} to {output_parquet}")
+
 
 if __name__ == "__main__":
     script_dir = os.path.dirname(os.path.abspath(__file__))
@@ -34,3 +41,4 @@ if __name__ == "__main__":
             output_parquet = os.path.join(output_folder, filename.replace('.csv', '.parquet'))
             csv_to_parquet(input_csv, output_parquet)
 
+    countries_parquet_conv(os.path.join(input_folder, 'countries.csv'), os.path.join(output_folder, 'countries.parquet'))
