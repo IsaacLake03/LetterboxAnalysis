@@ -1,0 +1,10 @@
+#Don't add large files to the github
+
+*.jpg
+*.csv
+*.parquet
+
+#Ignore the folders that contain the data
+LetterboxData/
+LetterboxParquet/
+posters/
