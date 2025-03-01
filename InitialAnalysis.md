@@ -16,3 +16,11 @@ once I fixed the path my queries started working perfectly.
 
 I also ran into some issues with convering the countries file automatically, so I wrote
 a quick polars thing to manually complete that conversion.
+
+On the analysis side my main issue is narrowing down to movies, the database itself also
+includes tvshows music videos and short films, so I set a time range of 60-240 minutes 
+and noticed that shows were not in the releases db so I checked that the movies had a
+release date.
+
+I am starting to realize that this data set has some intrinsic biases, especially towards
+things like Anime Movies that would only be watched by fans of the show.
