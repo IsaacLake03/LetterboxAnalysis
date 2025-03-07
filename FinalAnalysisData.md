@@ -2,6 +2,7 @@
 Drama, Comedy, Action, Horror, Romance
 
 Googles Top 10:
+Avg Rating Cumm: 3.86
 
 Comedy: Avg Rating: 3.64
 Airplane! (1980) - Rating: 3.84 - Studio: Paramount - America
@@ -64,6 +65,7 @@ Sleepless in Seattle (1993) - Rating: 3.44 - Studio: TriStar Pictures - America
 Ghost (1990) - Rating: 3.49 - Studio: Paramount - America
 
 Letterbox Top 10:
+Avg Rating: 4.43
 
 Comedy: Avg Rating: 4.37
 1. Parasite (2019) - Rating: 4.56 - Studio: Barunson E&A
